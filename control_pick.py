@@ -324,8 +324,8 @@ class WMSUpdateRuleThread(QThread):
                 normal_zones.update(ZONE_CFG_A | ZONE_CFG_B | ZONE_CFG_C | ZONE_CFG_E)
 
         dynamic_wave_map = {
-            "Block A&B": [1031, 1791, 2610, 2633, 2937, 2986],
-            "Block B&C": [1033, 1793, 2612, 2635, 2939, 2988],
+            "Block A&B": [-1],
+            "Block B&C": [-1],
             "Block A&B&C": [-1],
             "Block A&B&C&E": [3261,3290,3292,4004,4005,4006,4034,4035,4036,4037,4038],
             "Block ABCE": [3261,3290,3292,4004,4005,4006,4034,4035,4036,4037,4038]
