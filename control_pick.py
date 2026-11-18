@@ -24,7 +24,7 @@ ZONE_CFG_A = {"A1", "A2", "A3", "A4"}
 ZONE_CFG_A12 = {"A1", "A2"}
 ZONE_CFG_A34 = {"A3", "A4"}
 
-ZONE_CFG_B = {"B1", "B2", "B3", "B4", "B5", "HV", "FD"}
+ZONE_CFG_B = {"B1", "B2", "B3", "B4", "B5", "HV", "FD", "PP"}
 ZONE_CFG_B2 = {"B2"}
 ZONE_CFG_B4 = {"B4"}
 
