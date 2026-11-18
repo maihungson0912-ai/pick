@@ -29,7 +29,7 @@ ZONE_CFG_B2 = {"B2"}
 ZONE_CFG_B4 = {"B4"}
 
 ZONE_CFG_C = {"C1", "C2", "C3", "C4",}
-ZONE_CFG_E = {"E1", "E2", "E3", "E4", "TOP", "REP", "FDS"}
+ZONE_CFG_E = {"E1", "E2", "E3", "E4", "TOP", "REP", "FDS", "EF"}
 
 NORMAL_BLOCKS = [
     "Block A", "Block A 1-2", "Block A 3-4",
@@ -286,7 +286,7 @@ class WMSUpdateRuleThread(QThread):
                     "cross_zone_control": 0,
                     "preferred_area_level": 0,
                     "staff_id_list": staff_ids,
-                    "flow_pick_working_zone_list": ["E1", "E2", "E3", "E4", "REP"],
+                    "flow_pick_working_zone_list": ["E1", "E2", "E3", "E4", "REP", "EF"],
                     "flow_pick_order_group_id_list": [grp],
                     "dynamic_wave_order_group_id_list": [-1]
                 }
