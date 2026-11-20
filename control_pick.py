@@ -370,8 +370,8 @@ class WMSUpdateRuleThread(QThread):
         elif is_flow:
             flow_ssaq_staff = [p["user_id"] for p in self.picker_list if p.get("urgent") == "Q"]
             flow_normal_staff = [p["user_id"] for p in self.picker_list if p.get("urgent") != "Q"]
-            do_post(flow_normal_staff, ["SA4"], [self.target_zone], normal_channels, ["VNVLFPOG0134"], "Flow Normal")
-            do_post(flow_ssaq_staff, ["SA4"], [self.target_zone], ["50011", "50021", "50032"], ["VNVLFPOG0189"],
+            do_post(flow_normal_staff, ["SA4"], [self.target_zone], normal_channels, ["VNVLFPOG0189"], "Flow Normal")
+            do_post(flow_ssaq_staff, ["SA4"], [self.target_zone], ["50011", "50021", "50032"], ["VNVLFPOG0387"],
                     "Flow IntraNDD")
         else:
             target_z_list = list(normal_zones) if normal_zones else ["SA4"]
@@ -726,8 +726,8 @@ class FetchFlowTasksThread(QThread):
                 pass
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
-            f1 = executor.submit(fetch_group, "VNVLFPOG0134", flow_counts)
-            f2 = executor.submit(fetch_group, "VNVLFPOG0189", ssaq_counts)
+            f1 = executor.submit(fetch_group, "VNVLFPOG0189", flow_counts)
+            f2 = executor.submit(fetch_group, "VNVLFPOG0387", ssaq_counts)
             f3 = executor.submit(fetch_group_total, "VNVLFPOG0211", "PT_N")
             f4 = executor.submit(fetch_group_total, "VNVLFPOG0219", "PT_Q")
             f5 = executor.submit(fetch_group_total, "VNVLFPOG0220", "TV")
