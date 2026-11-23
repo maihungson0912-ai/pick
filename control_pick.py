@@ -380,7 +380,7 @@ class WMSUpdateRuleThread(QThread):
                     "Express All")
             do_post(urgent_ahm_staff, target_z_list, ["SA4"], ["50033", "50044"], ["VNVLFPOG0053"], "AHM Staff")
             do_post(urgent_sdd_staff, target_z_list, ["SA4"], ["50051"], ["VNVLFPOG0053"], "SDD Staff")
-            do_post(urgent_ndd_staff, target_z_list, ["SA4"], ["50057"], ["VNVLFPOG0053"], "NDD Staff")
+            do_post(urgent_ndd_staff, target_z_list, ["SA4"], ["50057", "50021"], ["VNVLFPOG0053"], "NDD Staff")
 
 
 class FetchTasksThread(QThread):
@@ -454,12 +454,19 @@ class FetchTasksThread(QThread):
                 channels = set(str(c) for c in task.get("channel_id_list", []))
                 has_ahm = bool(channels & {"50033", "50044"})
                 has_sdd = bool(channels & {"50051"})
-                has_ndd = bool(channels & {"50057"})
-                has_normal = bool(channels - {"50033", "50044", "50051", "50057"})
+                has_50057 = "50057" in channels
+                has_50021 = "50021" in channels
+                has_normal = bool(channels - {"50033", "50044", "50051", "50057", "50021"})
 
                 other_special = sum([has_ahm, has_sdd])
 
-                if has_ndd:
+                if has_50021:
+                    # 50021 luôn tính vào NDD (Tên lửa) nếu không lẫn với AHM/SDD/Normal/50057
+                    if not has_ahm and not has_sdd and not has_normal and not has_50057:
+                        task_type = "ndd"
+                    else:
+                        task_type = "oth"
+                elif has_50057:
                     if not has_ahm and not has_sdd and not has_normal:
                         task_type = "ndd"
                     elif is_day_shift and not has_ahm and not has_sdd and has_normal:
